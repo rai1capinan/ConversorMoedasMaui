@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ConversorMoedasMaui.MainPage">
+
+    <ScrollView>
+        <!-- Define a direção do layout da minha interface -->
+        <VerticalStackLayout Padding="16" Spacing="12">
+
+            <Grid ColumnDefinitions="*, *, Auto" RowDefinitions="Auto">
+                <!-- * = Ajuste do elemento para o tamanho disponivel de tela
+         Auto = Ajuste do tamanho de tela com base no tamanho do elemento
+         Definiçõs de coluna + definições de linha -->
+
+                <Picker x:Name="FromPicker" Grid.Column="0" Title="De:" SelectedIndexChanged="OnPickerChanged">
+                    <Picker.Items>
+                        <!-- Opções de escolha para meu usuário -->
+                        <x:String>BRL</x:String>
+                        <x:String>USD</x:String>
+                        <x:String>EUR</x:String>
+                    </Picker.Items>
+                </Picker>
+
+
+                <Picker x:Name="ToPicker" Grid.Column="1" Title="Para:" SelectedIndexChanged="OnPickerChanged" >
+                    <Picker.Items>
+                        <!-- Opções de escolha para meu usuário -->
+                        <x:String>BRL</x:String>
+                        <x:String>USD</x:String>
+                        <x:String>EUR</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Button Grid.Column="2" Text="Inverter" Margin="10,0,0,0" Clicked="OnInverterClicked" />
+
+            </Grid>
+
+            <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto">
+                <Label Text="Valor: " VerticalOptions="Center" Margin="0,0,20,0"/>
+                <Entry x:Name="AmountEntry" Grid.Column="1" Placeholder="Ex.: 100,50" Keyboard="Numeric" TextChanged ="OnAmountChanged"/>
+
+            </Grid>
+
+
+
+            <Button Text="Converter" Clicked= "OnConvertClicked"/>
+
+            <Label x:Name="ResultLabel" FontSize="18" FontAttributes="Bold"/>
+
+            <Label x:Name="InfoLabel" FontSize="12" TextColor="Gray"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
